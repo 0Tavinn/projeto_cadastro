@@ -28,6 +28,10 @@ export function TransactionForm({
   onSubmit,
   creating
 }: TransactionFormProps) {
+  const allowedCategories = categories.filter(
+    c => c.purpose === 'Ambas' || c.purpose === value.type
+  );
+
   return (
     <div className="bg-white p-4 rounded shadow-sm border border-slate-200">
       <h2 className="text-lg font-semibold mb-3">Nova Transação</h2>
@@ -74,7 +78,13 @@ export function TransactionForm({
             <select
               className="mt-1 w-full rounded border border-slate-300 px-3 py-2"
               value={value.type}
-              onChange={e => onChange({ ...value, type: e.target.value as TransactionType })}
+              onChange={e => {
+                const nextType = e.target.value as TransactionType;
+                const stillAllowed = categories.some(
+                  c => (c.purpose === 'Ambas' || c.purpose === nextType) && c.id === value.categoryId
+                );
+                onChange({ ...value, type: nextType, categoryId: stillAllowed ? value.categoryId : '' });
+              }}
             >
               <option value="Despesa">Despesa</option>
               <option value="Receita">Receita</option>
@@ -89,7 +99,7 @@ export function TransactionForm({
             onChange={e => onChange({ ...value, categoryId: e.target.value })}
           >
             <option value="">Selecione</option>
-            {categories.map(c => (
+            {allowedCategories.map(c => (
               <option key={c.id} value={c.id}>
                 {c.description} ({c.purpose})
               </option>
@@ -99,7 +109,7 @@ export function TransactionForm({
         <button
           className="w-full bg-emerald-600 text-white py-2 rounded hover:bg-emerald-500 disabled:opacity-60"
           onClick={onSubmit}
-          disabled={creating || !selectedPersonId}
+          disabled={creating || !selectedPersonId || allowedCategories.length === 0}
         >
           Registrar transação
         </button>
