@@ -2,6 +2,8 @@ using CadastroPessoas.Api.Data;
 using CadastroPessoas.Api.Dtos;
 using CadastroPessoas.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +52,13 @@ app.UseCors("frontend");
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    var databaseCreator = db.Database.GetService<IRelationalDatabaseCreator>();
+    var hasTables = databaseCreator.HasTables();
+
+    if (!hasTables)
+    {
+        db.Database.Migrate();
+    }
 }
 
 app.MapGet("/api/people", async (AppDbContext db) =>

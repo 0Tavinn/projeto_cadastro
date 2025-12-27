@@ -178,7 +178,6 @@ function App() {
       <header className="bg-slate-900 text-white py-4 shadow">
         <div className="max-w-6xl mx-auto px-4 flex flex-col gap-1">
           <h1 className="text-2xl font-semibold">Cadastro de Pessoas</h1>
-          <p className="text-sm text-slate-200">Back-end em .NET + Front em React/TS + Tailwind</p>
         </div>
       </header>
 
