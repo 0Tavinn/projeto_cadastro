@@ -1,6 +1,6 @@
 # Cadastro de Pessoas 
 
-Projeto feito com uma API em .NET 8 + EF Core (PostgreSQL) e um front em React/TypeScript (Vite e Tailwind) + Para salvamento de dados (Docker).
+Projeto feito com uma API em .NET 8 + EF Core (PostgreSQL) e um front em React/TypeScript (Vite e Tailwind) + Salvamento de dados (Docker).
 
 ## Arquitetura e Pastas
 - **Backend**: pasta `CadastroPessoas.Api` — API , endpoints em `Program.cs`, modelos/DTOs em `Models` e `Dtos`, contexto EF em `Data/AppDbContext.cs`.
