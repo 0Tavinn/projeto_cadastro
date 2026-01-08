@@ -5,7 +5,7 @@ Projeto feito com uma API em .NET 8 + EF Core (PostgreSQL) e um front em React/T
 ## Arquitetura e Pastas
 - **Backend**: pasta `CadastroPessoas.Api` — API , endpoints em `Program.cs`, modelos/DTOs em `Models` e `Dtos`, contexto EF em `Data/AppDbContext.cs`.
 - **Frontend**: pasta `cadastro-frontend` — app SPA em `src/App.tsx` com componentes e consumo de API via `src/services.ts`.
-- **Infra**: PostgreSQL externo (Docker/local) conforme string de conexão em `CadastroPessoas.Api/appsettings.json`. (Ou seja a partir do momento que roda-lo ira salvar todos os dados, so seu serviço local)
+- **Infra**: PostgreSQL externo (Docker/local) conforme string de conexão em `CadastroPessoas.Api/appsettings.json`. (Ou seja a partir do momento que roda-lo ira salvar todos os dados, no seu serviço local)
 
 ## Partes importantes
 - **Persistência**: `AppDbContext` configura entidades, enums, constraints e conversões para Postgres.
