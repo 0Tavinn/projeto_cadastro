@@ -16,7 +16,7 @@ Projeto feito com uma API em .NET 8 + EF Core (PostgreSQL) e um front em React/T
 ## Onde Tive mais dor de cabeça
 - **Migração e ajuste de constraints** para Postgres (check constraints via `ToTable`, conversões de enums/decimais e relacionamentos).
 - **Mapeamentos DTO** para remover duplicação nas projeções das consultas.
-- **CORS e integração front/back** (origem localhost 5173). (A aplicação ira rodar direto no Vite, mais lembre de rodar o back primeiro nisso ira abilitar a porta 5000, mas a que ira mostrar a aplicação completa sera localhost - dedicatoria do front)
+- **CORS e integração front/back** (origem localhost 5173). (A aplicação ira rodar direto no Vite, mais lembre de rodar o back primeiro nisso ira abilitar a porta 5000, e a que ira mostrar a aplicação completa sera localhost - dedicatoria do front)
 - **Refatoração do frontend** para quebrar a página única em componentes menores.(Ai aonde preferi utilizar docker pois senti maior segurança refatorando o conteudo, e tambem por ter alguma afinidade com a tecnologia para criar)
 
 ### Requisitos
